@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, registerWithEmailAndPassword } from '../auth/firebase';
+import { auth, loginWithEmailAndPassword } from '../auth/firebase';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-const Register = () => {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
 
-    const register = () => {
-        if (!name) alert('Please enter your name');
-        registerWithEmailAndPassword(name, email, password);
+    const login = () => {
+        loginWithEmailAndPassword(email, password);
+
     }
 
     useEffect(() => {
@@ -24,13 +24,7 @@ const Register = () => {
 
     return (
         <div>
-            <h1>Register</h1>
-            <input
-                type="text"
-                value={name}
-                placeholder='Full Name'
-                onChange={(e) => setName(e.target.value)}
-            />
+            <h1>Login</h1>
             <input
                 type="text"
                 value={email}
@@ -43,10 +37,10 @@ const Register = () => {
                 placeholder='Password'
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <Button onClick={register}>Register</Button>
+            <Button onClick={login}>login</Button>
         </div>
     );
 };
 
 
-export default Register;
+export default Login;

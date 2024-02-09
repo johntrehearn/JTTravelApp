@@ -11,8 +11,9 @@ import Home from "./routes/Home";
 import Root from "./routes/Root";
 import store from "./store/store";
 import Register from "./routes/Register";
+import Login from "./routes/Login";
 
-const theme = createTheme({
+const theme = createTheme( {
   palette: {
     primary: {
       main: "#3f51b5",
@@ -21,10 +22,10 @@ const theme = createTheme({
       main: "#f50057",
     },
   },
-});
+} );
 
 function App() {
-  const router = createBrowserRouter([
+  const router = createBrowserRouter( [
     {
       path: "/",
       element: <Root />,
@@ -48,10 +49,14 @@ function App() {
         {
           path: "/register",
           element: <Register />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
         }
       ],
     },
-  ]);
+  ] );
 
   return (
     <Provider store={store}>
