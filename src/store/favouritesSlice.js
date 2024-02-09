@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { stat } from 'original-fs';
 
 export const favouritesSlice = createSlice({
   name: "favourites",
@@ -8,21 +7,14 @@ export const favouritesSlice = createSlice({
   },
   reducers: {
     addFavourite(state, action) {
-      if (state.favourites.some((favourites) => favourites.name === action.payload)) 
-      state.favourites = [...state.favourites];
-    state.favourites = [...state.favourites, action.payload];
-  }, 
-
-    /* OLD VERSION
-    reducers: {
-    addFavourite(state, action) {
-      if (state.favourites.includes(action.payload)) {
-        return state.favourites;
-      } else {
-
-        state.favourites = [...state.favourites, action.payload];
-      }
-    }, */
+      if (
+        state.favourites.some(
+          (favourite) => favourite.name.common === action.payload.name.common
+        )
+      )
+        return;
+      state.favourites = [...state.favourites, action.payload];
+    },
     clearFavourites(state, action) {
       state.favourites = [];
     },
