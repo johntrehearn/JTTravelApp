@@ -7,7 +7,26 @@ import { Link } from "react-router-dom";
 import { logout } from "../auth/firebase";
 
 
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../auth/firebase';
+
+
+
 const Header = () => {
+
+  const [user, loading, error] = useAuthState(auth);
+
+  console.log("!!!!!", user);
+
+  function checkLoggedIn() {
+    if (localStorage.getItem('user')) {
+      document.getElementById('notLoggedIn').style.display = 'none';
+      document.getElementById('loggedIn').style.display = 'block';
+    } else {
+      document.getElementById('loggedIn').style.display = 'none';
+      document.getElementById('notLoggedIn').style.display = 'block';
+    }
+  }
   return (
     <Container fluid>
       <Row>
@@ -26,12 +45,12 @@ const Header = () => {
                   <Button variant="contained">Favourites</Button>
                 </Link>
                 <Link to="/register">
-                  <Button variant="contained">Register</Button>
+                  <Button id='notLoggedIn' variant="contained">Register</Button>
                 </Link>
                 <Link to="/login">
-                  <Button variant="contained">login</Button>
+                  <Button id='notLoggedIn' variant="contained">login</Button>
                 </Link>
-                <Button onClick={logout}>Logout</Button>
+                <Button id='loggedIn' onClick={logout}>Logout</Button>
               </Nav>
             </Navbar.Collapse>
           </Container>
