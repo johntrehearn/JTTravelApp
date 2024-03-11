@@ -15,10 +15,18 @@ const CountriesSingle = () => {
 
   console.log("Weather: ", weather);
 
+  const apiKey = import.meta.env.VITE_MAP_API;
+
+  const map = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${country.name.common}`;
+
+  const weatherAPI = import.meta.env.VITE_APP_OPEN_WEATHER_API;
+
+  console.log("Weather API: ", weatherAPI);
+
   useEffect(() => {
     axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${country.capital}&units=metric&appid=5d162dad58ffa39544422393f6d5273f`
+        `https://api.openweathermap.org/data/2.5/weather?q=${country.capital}&units=metric&appid=${weatherAPI}`
       )
       .catch((error) => {
         console.log(error);
@@ -71,15 +79,25 @@ const CountriesSingle = () => {
             </div>
           )}
         </Col>
+        <Col>
+          {
+            <div>
+              <iframe
+                src={map}>
+              </iframe>
+            </div>
+          }
+        </Col>
       </Row>
       <Row>
+
         <Col>
           <Button variant="light" onClick={() => navigate("/countries")}>
             Back to Countries
           </Button>
         </Col>
       </Row>
-    </Container>
+    </Container >
   );
 };
 
