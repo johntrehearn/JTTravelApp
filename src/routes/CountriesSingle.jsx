@@ -58,7 +58,7 @@ const CountriesSingle = () => {
       <Row className="m-5">
         <Col>
           {" "}
-          <Image
+          <Image id='jt'
             thumbnail
             src={`https://source.unsplash.com/featured/1600x900?${country.name.common}`}
           />

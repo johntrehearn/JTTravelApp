@@ -8,6 +8,7 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 import Countries from "./routes/Countries";
 import CountriesSingle from "./routes/CountriesSingle";
 import Favourites from "./routes/Favourites";
+import Visited from './routes/Visited';
 import Home from "./routes/Home";
 import Login from "./routes/Login";
 import Register from "./routes/Register";
@@ -42,6 +43,10 @@ function App() {
                 <Route
                   path="/favourites"
                   element={<ProtectedRoute component={Favourites} />}
+                />
+                <Route
+                  path="/visited"
+                  element={<ProtectedRoute component={Visited} />}
                 />
                 <Route
                   path="/countries/:single"

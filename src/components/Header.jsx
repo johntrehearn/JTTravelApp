@@ -46,6 +46,9 @@ const Header = () => {
                 <Link to="/favourites">
                   <Button variant="contained">Favourites</Button>
                 </Link>
+                <Link to="/visited">
+                  <Button variant="contained">Visited</Button>
+                </Link>
                 <Link to="/register">
                   <Button variant="contained">Register</Button>
                 </Link>

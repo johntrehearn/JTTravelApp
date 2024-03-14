@@ -11,23 +11,27 @@ import Row from "react-bootstrap/Row";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getFavouritesFromSource } from "../auth/firebase";
+import { getVisitedFromSource } from "../auth/firebase";
 import { initializeCountries } from "../store/countriesSlice";
 import { addFavourite, removeFavourite } from "../store/favouritesSlice";
+import { addVisited, removeVisited } from "../store/visitedSlice";
 
 const Countries = () => {
   const dispatch = useDispatch();
 
   const countriesList = useSelector((state) => state.countries.countries);
   const favourites = useSelector((state) => state.favourites.favourites);
+  const visited = useSelector((state) => state.visited.visited);
   const loading = useSelector((state) => state.countries.isLoading);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
     dispatch(initializeCountries());
     dispatch(getFavouritesFromSource());
+    dispatch(getVisitedFromSource());
   }, [dispatch]);
 
-  useEffect(() => {}, [search]);
+  useEffect(() => { }, [search]);
 
   if (loading) {
     return (
@@ -75,6 +79,19 @@ const Countries = () => {
                 ) : (
                   <FavoriteIcon
                     onClick={() => dispatch(addFavourite(country.name.common))}
+                  />
+                )}
+                {visited.some(
+                  (visit) => visit === country.name?.common
+                ) ? (
+                  <FavoriteBorderIcon
+                    onClick={() =>
+                      dispatch(removeVisited(country.name.common))
+                    }
+                  />
+                ) : (
+                  <FavoriteIcon
+                    onClick={() => dispatch(addVisited(country.name.common))}
                   />
                 )}
                 <Link
