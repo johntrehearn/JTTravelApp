@@ -42,11 +42,11 @@ const Visited = () => {
               {visited.some(
                 (visit) => visit === country.name?.common
               ) ? (
-                <FavoriteBorderIcon
+                <AirplanemodeActiveIcon
                   onClick={() => dispatch(removeVisited(country.name.common))}
                 />
               ) : (
-                <FavoriteIcon
+                <AirplanemodeInactiveIcon
                   onClick={() => dispatch(addVisited(country.name.common))}
                 />
               )}
