@@ -14,6 +14,8 @@ const Header = () => {
 
   const [name, setName] = useState();
 
+  const [logIN, setLogIN] = useState(false);
+
   useEffect(() => {
     const getUserData = async () => {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
@@ -21,8 +23,18 @@ const Header = () => {
       querySnapshot.forEach((doc) => {
         const name = doc.data().name;
         setName(name);
+        setLogIN(false);
       });
     };
+
+    // const loggedIn = async () => {
+    //   const l = query(collection(db, "users"), where("uid", "==", user?.uid));
+    //   const querySnapshot = await getDocs(l);
+    //   querySnapshot.forEach((doc) => {
+
+    //   });
+
+    // }
 
     if (user) {
       getUserData();
@@ -78,11 +90,23 @@ const Header = () => {
 
               <div class="login">
 
-
                 <Link to="/login">
                   <Button variant="contained">Login</Button>
                 </Link>
+
                 <Button onClick={logout}>Logout</Button>
+
+                {name ?
+                  <Link to="/login">
+                    <Button variant="contained">Login</Button>
+                  </Link>
+
+                  :
+                  <Button onClick={logout}>Logout</Button>
+
+
+                }
+
 
               </div>
 
