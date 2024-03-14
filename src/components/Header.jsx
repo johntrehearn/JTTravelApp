@@ -35,15 +35,11 @@ const Header = () => {
 
         <Navbar id='header'>
 
-          <Container class="split">
+          <Container className="justify-content-end">
 
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-
-
-
-            <div class='jt'>
-
-
+            <Navbar.Collapse id="basic-navbar-nav">
 
               <div class="navButt">
 
@@ -73,7 +69,6 @@ const Header = () => {
               <Navbar.Text>
                 {name ? `Welcome, ${name}` : "Welcome, Guest"}
               </Navbar.Text>
-
               {/* Login*/}
 
               <div class="login">
@@ -86,9 +81,7 @@ const Header = () => {
 
               </div>
 
-            </div>
-
-
+            </Navbar.Collapse>
 
           </Container>
         </Navbar>
