@@ -54,30 +54,39 @@ const CountriesSingle = () => {
   }
 
   return (
-    <Container>
+    <div id='singleContainer'>
       <Row className="m-5">
-        <Col>
-          {" "}
-          <Image id='jt'
-            thumbnail
-            src={`https://source.unsplash.com/featured/1600x900?${country.name.common}`}
-          />
-        </Col>
-        <Col>
-          <h2 className="display-4">{country.name.common}</h2>
-          <h3>Capital {country.capital}</h3>
-          {!error && weather && (
-            <div>
-              <p>
-                Right now it is <strong>{weather.main.temp}</strong> degrees in{" "}
-                {country.capital} and {weather.weather[0].description}
-              </p>
-              <img
-                src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-                alt={weather.weather[0].description}
-              />
+        <Row className='countrySingleInfo'>
+          <Col>
+            <div className='countrySingleTitle'>
+
+              {" "}
+              <h2 className="display-4">{country.name.common}</h2>
+              <h3>Capital: {country.capital}</h3>
             </div>
-          )}
+          </Col>
+          <Col>
+            <Image id='singleCountriesImage'
+
+              src={`https://source.unsplash.com/featured/1600x900?${country.name.common}`}
+            />
+          </Col>
+        </Row>
+        <Col>
+          <Row id='singleCountriesWeather'>
+            {!error && weather && (
+              <div>
+                <p>
+                  Right now it is <strong>{weather.main.temp}</strong> degrees in{" "}
+                  {country.capital} and {weather.weather[0].description}
+                </p>
+                <img
+                  src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                  alt={weather.weather[0].description}
+                />
+              </div>
+            )}
+          </Row>
         </Col>
         <Col>
           {
@@ -97,7 +106,7 @@ const CountriesSingle = () => {
           </Button>
         </Col>
       </Row>
-    </Container >
+    </div >
   );
 };
 

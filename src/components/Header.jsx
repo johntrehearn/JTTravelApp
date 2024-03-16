@@ -41,6 +41,11 @@ const Header = () => {
     }
   }, [user]);
 
+  function logoutReset() {
+    setName(null);
+    logout();
+  }
+
   return (
     <Container fluid>
       <Row>
@@ -74,36 +79,32 @@ const Header = () => {
                   <Link to="/visited">
                     <Button type="button" class="btn btn-primary">Visited</Button>
                   </Link>
-                  <Link to="/register">
-                    <Button type="button" class="btn btn-primary">Register</Button>
-                  </Link>
+
 
                 </Nav>
               </div>
 
               {/* Text Container for User */}
               <Navbar.Text>
-                {name ? `Welcome, ${name}` : "Welcome, Guest"}
+                {name ? `Welcome ${name} ` : "Welcome, Guest - Please register or login"}
               </Navbar.Text>
 
               {/* Login*/}
 
               <div class="login">
 
-
-
                 {name ?
-
-<Button onClick={logout}>Logout</Button>
-
-:
-                  <Link to="/login">
-                    <Button variant="contained">Login</Button>
-                  </Link>
-
+                  <Button onClick={logoutReset}>Logout</Button>
+                  :
+                  <>
+                    <Link to="/login">
+                      <Button type="button">Login</Button>
+                    </Link>
+                    <Link to="/register">
+                      <Button type="button" class="btn btn-primary">Register</Button>
+                    </Link>
+                  </>
                 }
-
-
               </div>
 
             </div>

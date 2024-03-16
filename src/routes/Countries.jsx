@@ -52,14 +52,17 @@ const Countries = () => {
   return (
     <Container fluid>
       <Row>
-        <Form.Control
-          style={{ width: "18rem" }}
-          type="search"
-          className="me-2 "
-          placeholder="Search for countries"
-          aria-label="Search"
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className='search'>
+
+          <Form.Control
+            style={{ width: "18rem" }}
+            type="search"
+            className="me-2 "
+            placeholder="Search for countries"
+            aria-label="Search"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
       </Row>
       <Row xs={2} md={3} lg={4} className=" g-3">
         {countriesList
@@ -72,39 +75,39 @@ const Countries = () => {
                 <div className='favVisitBox'>
                   <div>
 
-                 
 
 
-                  {favourites.some(
-                    (favourite) => favourite === country.name?.common
-                  ) ? (
-                    <FavoriteBorderIcon
-                      onClick={() =>
-                        dispatch(removeFavourite(country.name.common))
-                      }
-                    />
-                  ) : (
-                    <FavoriteIcon
-                      onClick={() => dispatch(addFavourite(country.name.common))}
-                    />
-                  )}
-                   </div>
-                   <div>
 
-                   
-                  {visited.some(
-                    (visit) => visit === country.name?.common
-                  ) ? (
-                    <AirplanemodeActiveIcon
-                      onClick={() =>
-                        dispatch(removeVisited(country.name.common))
-                      }
-                    />
-                  ) : (
-                    <AirplanemodeInactiveIcon
-                      onClick={() => dispatch(addVisited(country.name.common))}
-                    />
-                  )}
+                    {favourites.some(
+                      (favourite) => favourite === country.name?.common
+                    ) ? (
+                      <FavoriteBorderIcon
+                        onClick={() =>
+                          dispatch(removeFavourite(country.name.common))
+                        }
+                      />
+                    ) : (
+                      <FavoriteIcon
+                        onClick={() => dispatch(addFavourite(country.name.common))}
+                      />
+                    )}
+                  </div>
+                  <div>
+
+
+                    {visited.some(
+                      (visit) => visit === country.name?.common
+                    ) ? (
+                      <AirplanemodeActiveIcon
+                        onClick={() =>
+                          dispatch(removeVisited(country.name.common))
+                        }
+                      />
+                    ) : (
+                      <AirplanemodeInactiveIcon
+                        onClick={() => dispatch(addVisited(country.name.common))}
+                      />
+                    )}
                   </div>
                 </div>
                 <Link
