@@ -58,11 +58,14 @@ const CountriesSingle = () => {
       <Row className="m-5">
         <Row className='countrySingleInfo'>
           <Col>
-            <div className='countrySingleTitle'>
+            <div className='text'>
 
-              {" "}
-              <h2 className="display-4">{country.name.common}</h2>
-              <h3>Capital: {country.capital}</h3>
+              <div className='countrySingleTitle'>
+
+                {" "}
+                <h2 className="display-4">{country.name.common}</h2>
+                <h3>Capital: {country.capital}</h3>
+              </div>
             </div>
           </Col>
           <Col>
@@ -76,14 +79,17 @@ const CountriesSingle = () => {
           <Row id='singleCountriesWeather'>
             {!error && weather && (
               <div>
-                <p>
+                <p className='weather'>
                   Right now it is <strong>{weather.main.temp}</strong> degrees in{" "}
                   {country.capital} and {weather.weather[0].description}
                 </p>
-                <img
-                  src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-                  alt={weather.weather[0].description}
-                />
+                <div className='weatherIMG'>
+
+                  <img className='weather'
+                    src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                    alt={weather.weather[0].description}
+                  />
+                </div>
               </div>
             )}
           </Row>
@@ -91,7 +97,7 @@ const CountriesSingle = () => {
         <Col>
           {
             <div>
-              <iframe
+              <iframe width={560} height={315}
                 src={map}>
               </iframe>
             </div>
