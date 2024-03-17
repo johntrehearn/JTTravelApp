@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-
+import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
+import AirplanemodeInactiveIcon from '@mui/icons-material/AirplanemodeInactive';
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Form, Spinner } from "react-bootstrap";
@@ -11,23 +12,27 @@ import Row from "react-bootstrap/Row";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getFavouritesFromSource } from "../auth/firebase";
+import { getVisitedFromSource } from "../auth/firebase";
 import { initializeCountries } from "../store/countriesSlice";
 import { addFavourite, removeFavourite } from "../store/favouritesSlice";
+import { addVisited, removeVisited } from "../store/visitedSlice";
 
 const Countries = () => {
   const dispatch = useDispatch();
 
   const countriesList = useSelector((state) => state.countries.countries);
   const favourites = useSelector((state) => state.favourites.favourites);
+  const visited = useSelector((state) => state.visited.visited);
   const loading = useSelector((state) => state.countries.isLoading);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
     dispatch(initializeCountries());
     dispatch(getFavouritesFromSource());
+    dispatch(getVisitedFromSource());
   }, [dispatch]);
 
-  useEffect(() => {}, [search]);
+  useEffect(() => { }, [search]);
 
   if (loading) {
     return (
@@ -47,14 +52,17 @@ const Countries = () => {
   return (
     <Container fluid>
       <Row>
-        <Form.Control
-          style={{ width: "18rem" }}
-          type="search"
-          className="me-2 "
-          placeholder="Search for countries"
-          aria-label="Search"
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className='search'>
+
+          <Form.Control
+            style={{ width: "18rem" }}
+            type="search"
+            className="me-2 "
+            placeholder="Search for countries"
+            aria-label="Search"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
       </Row>
       <Row xs={2} md={3} lg={4} className=" g-3">
         {countriesList
@@ -64,19 +72,44 @@ const Countries = () => {
           .map((country) => (
             <Col className="mt-5" key={country.name.common}>
               <Card className="h-100">
-                {favourites.some(
-                  (favourite) => favourite === country.name?.common
-                ) ? (
-                  <FavoriteBorderIcon
-                    onClick={() =>
-                      dispatch(removeFavourite(country.name.common))
-                    }
-                  />
-                ) : (
-                  <FavoriteIcon
-                    onClick={() => dispatch(addFavourite(country.name.common))}
-                  />
-                )}
+                <div className='favVisitBox'>
+                  <div>
+
+
+
+
+                    {favourites.some(
+                      (favourite) => favourite === country.name?.common
+                    ) ? (
+                      <FavoriteBorderIcon
+                        onClick={() =>
+                          dispatch(removeFavourite(country.name.common))
+                        }
+                      />
+                    ) : (
+                      <FavoriteIcon
+                        onClick={() => dispatch(addFavourite(country.name.common))}
+                      />
+                    )}
+                  </div>
+                  <div>
+
+
+                    {visited.some(
+                      (visit) => visit === country.name?.common
+                    ) ? (
+                      <AirplanemodeActiveIcon
+                        onClick={() =>
+                          dispatch(removeVisited(country.name.common))
+                        }
+                      />
+                    ) : (
+                      <AirplanemodeInactiveIcon
+                        onClick={() => dispatch(addVisited(country.name.common))}
+                      />
+                    )}
+                  </div>
+                </div>
                 <Link
                   to={`/countries/${country.name.common}`}
                   state={{ country: country }}

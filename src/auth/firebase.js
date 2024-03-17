@@ -14,6 +14,7 @@ import {
   where,
 } from "firebase/firestore";
 import { getFavourites } from "../store/favouritesSlice";
+import { getVisited } from "../store/visitedSlice";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -78,6 +79,8 @@ export const getNameOfUser = async (user) => {
   }
 };
 
+// Favourite Countried
+
 export const addFavouriteToFirebase = async (uid, name) => {
   try {
     await addDoc(collection(db, `users/${uid}/favourites`), { name });
@@ -129,6 +132,62 @@ export const getFavouritesFromSource = () => async (dispatch) => {
     const q = await getDocs(collection(db, `users/${user.uid}/favourites`));
     const favourites = q.docs.map((doc) => doc.data().name);
     dispatch(getFavourites(favourites));
+  }
+};
+
+// Visited Countries
+
+export const addVisitedToFirebase = async (uid, name) => {
+  try {
+    await addDoc(collection(db, `users/${uid}/visited`), { name });
+    console.log("Visited added to Firebase database");
+  } catch (err) {
+    console.error("Error adding visited to Firebase database: ", err);
+  }
+};
+
+export const removeVisitedFromFirebase = async (uid, name) => {
+  console.log("Name: ", name);
+  try {
+    if (!name) {
+      console.error(
+        "Error removing visited from Firebase database: name parameter is undefined"
+      );
+      return;
+    }
+    const q = query(
+      collection(db, `users/${uid}/visited`),
+      where("name", "==", name)
+    );
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      deleteDoc(doc.ref);
+      console.log("Visited removed from Firebase database");
+    });
+  } catch (err) {
+    console.error("Error removing visited from Firebase database: ", err);
+  }
+};
+
+export const clearVisitedFromFirebase = async (uid) => {
+  try {
+    const q = query(collection(db, `users/${uid}/visited`));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      deleteDoc(doc.ref);
+      console.log("Visited removed from Firebase database");
+    });
+  } catch (err) {
+    console.error("Error removing Visited from Firebase database: ", err);
+  }
+};
+
+export const getVisitedFromSource = () => async (dispatch) => {
+  const user = auth.currentUser;
+  if (user) {
+    const q = await getDocs(collection(db, `users/${user.uid}/visited`));
+    const visit = q.docs.map((doc) => doc.data().name);
+    dispatch(getVisited(visit));
   }
 };
 

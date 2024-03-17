@@ -14,6 +14,8 @@ const Header = () => {
 
   const [name, setName] = useState();
 
+  const [logIN, setLogIN] = useState(false);
+
   useEffect(() => {
     const getUserData = async () => {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
@@ -21,6 +23,7 @@ const Header = () => {
       querySnapshot.forEach((doc) => {
         const name = doc.data().name;
         setName(name);
+        setLogIN(false);
       });
     };
 
@@ -29,36 +32,76 @@ const Header = () => {
     }
   }, [user]);
 
+  function logoutReset() {
+    setName(null);
+    logout();
+  }
+
   return (
     <Container fluid>
       <Row>
-        <Navbar bg="light" variant="light">
-          <Container className="justify-content-end">
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav>
-                <Link to="/">
-                  <Button variant="contained">Home</Button>
-                </Link>
-                <Link to="/countries">
-                  <Button variant="contained">Countries</Button>
-                </Link>
-                <Link to="/favourites">
-                  <Button variant="contained">Favourites</Button>
-                </Link>
-                <Link to="/register">
-                  <Button variant="contained">Register</Button>
-                </Link>
-                <Link to="/login">
-                  <Button variant="contained">Login</Button>
-                </Link>
-                <Button onClick={logout}>Logout</Button>
-              </Nav>
-              {/* Insert bootstrap text container here */}
+
+        <Navbar id='header'>
+
+          <Container class="split">
+
+
+
+
+
+            <div class='jt'>
+
+
+
+              <div class="navButt">
+
+
+                <Nav>
+
+                  <Link to="/">
+                    <Button type="button" class="btn btn-primary">Home</Button>
+                  </Link>
+                  <Link to="/countries">
+                    <Button type="button" class="btn btn-primary">Countries</Button>
+                  </Link>
+                  <Link to="/favourites">
+                    <Button type="button" class="btn btn-primary">Favourites</Button>
+                  </Link>
+                  <Link to="/visited">
+                    <Button type="button" class="btn btn-primary">Visited</Button>
+                  </Link>
+
+
+                </Nav>
+              </div>
+
+              {/* Text Container for User */}
               <Navbar.Text>
-                {name ? `Welcome, ${name}` : "Welcome, Guest"}
+                {name ? `Welcome ${name} ` : "Welcome, Guest - Please register or login"}
               </Navbar.Text>
-            </Navbar.Collapse>
+
+              {/* Login*/}
+
+              <div class="login">
+
+                {name ?
+                  <Button onClick={logoutReset}>Logout</Button>
+                  :
+                  <>
+                    <Link to="/login">
+                      <Button type="button">Login</Button>
+                    </Link>
+                    <Link to="/register">
+                      <Button type="button" class="btn btn-primary">Register</Button>
+                    </Link>
+                  </>
+                }
+              </div>
+
+            </div>
+
+
+
           </Container>
         </Navbar>
       </Row>
