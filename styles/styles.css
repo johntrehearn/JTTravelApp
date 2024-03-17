@@ -1,0 +1,211 @@
+#header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(53, 52, 52);
+    padding: 0;
+    font-family: "Ojuju", sans-serif;
+
+}
+
+body {
+    font-family: "Ojuju", sans-serif;
+}
+
+
+
+/* .btn-contained {
+    background-color: #afabab !important;
+    color: #dcdbde !important;
+} */
+
+.btn-primary {
+    background-color: rgb(53, 52, 52) !important;
+    color: #97af1e !important;
+    border: pink !important;
+
+}
+
+.navbar-text {
+    color: #af451e
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+    background-color: #dcdbde !important;
+    color: #af1e2a !important;
+    border: pink !important;
+}
+
+body {
+    background-color: lightslategray;
+}
+
+.favVisitBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(53, 52, 52);
+    padding: 0 20px;
+}
+
+
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(53, 52, 52);
+    padding: 0 20px;
+}
+
+#basic-navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(53, 52, 52);
+    padding: 0 20px;
+}
+
+.split {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(53, 52, 52);
+
+}
+
+.login {
+    background-color: rgb(53, 52, 52);
+    width: 5rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    background-color: rgb(53, 52, 52);
+}
+
+.jt {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(53, 52, 52);
+}
+
+.button {
+    border: solid;
+}
+
+.card {
+    background-color: rgb(203, 207, 207);
+}
+
+.landingPage {
+    text-align: center;
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    margin-top: 5vh;
+}
+
+#singleCountriesImage {
+    width: 40vw;
+    height:
+
+        auto;
+
+
+}
+
+.countrySingleTitle {
+    padding-top: 10vh;
+    color: rgb(6, 6, 107);
+
+
+
+
+}
+
+.countrySingleInfo {
+    padding-bottom: 10vw;
+}
+
+#singleCountriesWeather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    justify-content: space-around;
+    background-color: antiquewhite;
+    border-radius: 10px;
+
+
+}
+
+.display-4 {
+
+    /* text-align: center;
+    margin-left: 100px; */
+
+
+
+}
+
+.weatherIMG {
+    text-align: center;
+
+}
+
+.weather {
+
+    text-align: center;
+
+
+
+
+
+    top: 30%;
+
+
+
+    border-radius: 10px;
+
+}
+
+.text {
+    text-align: center;
+}
