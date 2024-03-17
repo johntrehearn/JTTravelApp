@@ -1,15 +1,17 @@
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Row from "react-bootstrap/Row";
+
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import Row from "react-bootstrap/Row";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { auth, db, logout } from "../auth/firebase";
 
 const Header = () => {
+  
   const [user] = useAuthState(auth);
 
   const [name, setName] = useState();
@@ -99,8 +101,6 @@ const Header = () => {
               </div>
 
             </div>
-
-
 
           </Container>
         </Navbar>

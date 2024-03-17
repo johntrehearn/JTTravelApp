@@ -15,10 +15,7 @@ import {
 } from "firebase/firestore";
 import { getFavourites } from "../store/favouritesSlice";
 import { getVisited } from "../store/visitedSlice";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API,
   authDomain: "countries-react-7e9b3.›firebaseapp.com",
@@ -28,12 +25,10 @@ const firebaseConfig = {
   appId: "1:679922191367:web:e9beb6060b483e524eeea2"
 };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 
-// Here we get access to the project authentication
 const auth = getAuth(app);
-// Here we get access to the project database
+
 const db = getFirestore(app);
 
 const registerWithEmailAndPassword = async (name, email, password) => {
@@ -78,8 +73,6 @@ export const getNameOfUser = async (user) => {
     return null;
   }
 };
-
-// Favourite Countried
 
 export const addFavouriteToFirebase = async (uid, name) => {
   try {

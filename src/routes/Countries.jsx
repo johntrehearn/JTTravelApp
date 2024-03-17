@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
-import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
-import AirplanemodeInactiveIcon from '@mui/icons-material/AirplanemodeInactive';
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { Form, Spinner } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
+import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
+import AirplanemodeInactiveIcon from '@mui/icons-material/AirplanemodeInactive';
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Row from "react-bootstrap/Row";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getFavouritesFromSource } from "../auth/firebase";
 import { getVisitedFromSource } from "../auth/firebase";
+import { Form, Spinner } from "react-bootstrap";
 import { initializeCountries } from "../store/countriesSlice";
+import { useEffect, useState } from "react";
 import { addFavourite, removeFavourite } from "../store/favouritesSlice";
 import { addVisited, removeVisited } from "../store/visitedSlice";
 
@@ -75,25 +76,15 @@ const Countries = () => {
                 <div className='favVisitBox'>
                   <div>
 
-
-
-
                     {favourites.some(
                       (favourite) => favourite === country.name?.common
                     ) ? (
-                      <FavoriteBorderIcon
-                        onClick={() =>
-                          dispatch(removeFavourite(country.name.common))
-                        }
-                      />
+                      <FavoriteBorderIcon onClick={() => dispatch(removeFavourite(country.name.common))} />
                     ) : (
-                      <FavoriteIcon
-                        onClick={() => dispatch(addFavourite(country.name.common))}
-                      />
+                      <FavoriteIcon onClick={() => dispatch(addFavourite(country.name.common))} />
                     )}
                   </div>
                   <div>
-
 
                     {visited.some(
                       (visit) => visit === country.name?.common
@@ -104,16 +95,11 @@ const Countries = () => {
                         }
                       />
                     ) : (
-                      <AirplanemodeInactiveIcon
-                        onClick={() => dispatch(addVisited(country.name.common))}
-                      />
+                      <AirplanemodeInactiveIcon onClick={() => dispatch(addVisited(country.name.common))} />
                     )}
                   </div>
                 </div>
-                <Link
-                  to={`/countries/${country.name.common}`}
-                  state={{ country: country }}
-                >
+                <Link to={`/countries/${country.name.common}`} state={{ country: country }}>
                   <Card.Img
                     variant="top"
                     src={country.flags.svg}
