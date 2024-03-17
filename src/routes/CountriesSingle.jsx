@@ -65,6 +65,7 @@ const CountriesSingle = () => {
                 {" "}
                 <h2 className="display-4">{country.name.common}</h2>
                 <h3>Capital: {country.capital}</h3>
+                <h3>Time Zone: {country.timezones} </h3>
               </div>
             </div>
           </Col>

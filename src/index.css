@@ -128,6 +128,10 @@ nav {
     background-color: rgb(203, 207, 207);
 }
 
+.landingPage {
+    text-align: center;
+}
+
 .search {
     display: flex;
     flex-direction: column;
@@ -148,21 +152,10 @@ nav {
 }
 
 .countrySingleTitle {
+    padding-top: 10vh;
+    color: rgb(6, 6, 107);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    position: absolute;
-    text-align: center;
-    top: 30%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    padding-right: 20vw;
 
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
 
 
 }

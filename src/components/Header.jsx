@@ -27,15 +27,6 @@ const Header = () => {
       });
     };
 
-    // const loggedIn = async () => {
-    //   const l = query(collection(db, "users"), where("uid", "==", user?.uid));
-    //   const querySnapshot = await getDocs(l);
-    //   querySnapshot.forEach((doc) => {
-
-    //   });
-
-    // }
-
     if (user) {
       getUserData();
     }
