@@ -1,9 +1,3 @@
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Provider } from "react-redux";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Countries from "./routes/Countries";
 import CountriesSingle from "./routes/CountriesSingle";
@@ -14,6 +8,14 @@ import Login from "./routes/Login";
 import Register from "./routes/Register";
 import Root from "./routes/Root";
 import store from "./store/store";
+
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Provider } from "react-redux";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+
 const theme = createTheme({
   palette: {
     primary: {

@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, logout } from "../auth/firebase";
 
-
-
 const WelcomeUser = () => {
 
     const [user] = useAuthState(auth);
@@ -25,9 +23,6 @@ const WelcomeUser = () => {
             getUserData();
         }
     }, [user]);
-
-
-
 
     return (
         <div>

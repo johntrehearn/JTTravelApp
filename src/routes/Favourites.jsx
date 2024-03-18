@@ -1,15 +1,16 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getFavouritesFromSource } from "../auth/firebase";
+import { initializeCountries } from "../store/countriesSlice";
+import { addFavourite, removeFavourite } from "../store/favouritesSlice";
+
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
-import { useDispatch, useSelector } from "react-redux";
-import { getFavouritesFromSource } from "../auth/firebase";
-import { initializeCountries } from "../store/countriesSlice";
-import { addFavourite, removeFavourite } from "../store/favouritesSlice";
 
 const Favourites = () => {
   const dispatch = useDispatch();
@@ -62,10 +63,7 @@ const Favourites = () => {
                 <Card.Subtitle className="mb-5 text-muted">
                   {country.name.official}
                 </Card.Subtitle>
-                <ListGroup
-                  variant="flush"
-                  className="flex-grow-1 justify-content-end"
-                >
+                <ListGroup variant="flush" className="flex-grow-1 justify-content-end">
                   <ListGroup.Item>
                     <i className="bi bi-translate me-2"></i>
                     {Object.values(country.languages ?? {}).join(", ")}

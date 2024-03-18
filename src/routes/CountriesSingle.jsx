@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
 import { Button, Col, Container, Image, Row, Spinner } from "react-bootstrap";
 
 const CountriesSingle = () => {

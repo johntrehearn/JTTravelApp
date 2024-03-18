@@ -1,35 +1,51 @@
-## Begin Countries Application setup...
+# JT Travel App
 
-### Steps:
+## Project
 
-1. Install react-redux and react-redux toolkit
-   Install react-redux and @reduxjs/toolkit using npm or yarn. These libraries will be used to manage the state of your application.
+- This is a project for the Full Stack Web Developer Program at Business College Helsinki built in React - Vite. User can register and save favourite and visited countries. A single country page shows further information such as the capital and time zone (against GMT). The current weather is provided, including temperature and a short description. A map showing the country is also displayed allowing the user to click and zoom.
 
-```shell
-npm install react-redux @reduxjs/toolkit
+### Technologies Used
+
+- Axios
+- React-redux & react-redux toolkit
+- Bootstrap Icons
+- Countries API: 
+
+```
+https://restcountries.com/v3.1/all
+
 ```
 
-2. Signup for weather api at: https://home.openweathermap.org/users/sign_up
-   Sign up for the OpenWeatherMap API at https://home.openweathermap.org/users/sign_up. You will receive an API key which will be used to fetch weather data. The signup means we have to wait 2 hours for the API key to be available. We will not be using this right away.
+- Weather API:
 
-**_ We will do this step together _** 3. Set up store, slice and (do api call together - service)
-Set up your Redux store and create a slice for your countries data. In the slice, define actions and reducers to handle the fetching of country data. You can use createAsyncThunk from Redux Toolkit to handle the API call.
+```
+https://home.openweathermap.org
+```
 
-4. Test that redux in chrome is showing the empty countries array.
-   Test your Redux setup by checking the Redux DevTools in your browser.
+- Firebase Authentication
 
-5. Connect Countries.jsx to store and replace the countriesList and loading with values from redux.
-   In your Countries.jsx component, connect to the Redux store using the useSelector and useDispatch hooks from react-redux. Replace the local countriesList and loading state with values from the Redux store.
 
-6. Use framework component to fetch data and display.
+### App Features
 
-7. Create search function for all countries
-   Implement a search function that filters the list of countries based on the user's input. This could be done in the Redux slice or in the component itself, depending on your preference.
+- User Registration and Login
+- Show all countries (Logged in user)
+- Save favourites (Logged in user)
+- Save visited (Logged in user)
 
-Think about the steps carefully here... which part should we do first and why? Do we map and then filter or filter and then map for example?
-Think of your reason...
+#### Single Country
+   
+   - Name 
+   - Capital
+   - Time zone vs GMT
+   - Picture: 
+   
+      ```
+      https://source.unsplash.com
 
-8. Create link container and add in link for single page later (suggested wrapping Card.Img)
-   Create a link container component that wraps around each country item. This component should use the Link component from react-router-dom to navigate to a detailed view of the country when clicked. It's suggested to wrap the Card.Img component with this link container.
+      ```
+   - Weather with icon display
+   - Map: 
 
-**_ We will do this step together _** 9. Set up country single.
+      ```
+      https://www.google.com/maps
+      ```

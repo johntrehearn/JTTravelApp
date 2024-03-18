@@ -11,7 +11,6 @@ import { initializeCountries } from "../store/countriesSlice";
 
 const Countries = () => {
   const dispatch = useDispatch();
-
   const countriesList = [];
   const loading = false;
 
@@ -50,24 +49,18 @@ const Countries = () => {
                 }}
               />
               <Card.Body className="d-flex flex-column">
-                <Card.Title>** PUT COUNTRY COMMON NAME HERE **</Card.Title>
+                <Card.Title>{country.name.common} </Card.Title>
                 <Card.Subtitle className="mb-5 text-muted">
-                  ** PUT COUNTRY OFFICIAL NAME HERE **
+                  {country.name.official}
                 </Card.Subtitle>
-                <ListGroup
-                  variant="flush"
-                  className="flex-grow-1 justify-content-end"
-                >
+                <ListGroup variant="flush" className="flex-grow-1 justify-content-end">
                   <ListGroup.Item>
                     <i className="bi bi-translate me-2"></i>
-                    create a list of languages from the array.
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <i className="bi bi-cash-coin me-2"></i>
-                    create list of currencies from the array.
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    show population with formatting here.
                   </ListGroup.Item>
                 </ListGroup>
               </Card.Body>

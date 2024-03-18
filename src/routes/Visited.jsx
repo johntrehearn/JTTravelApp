@@ -1,14 +1,12 @@
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import AirplanemodeInactiveIcon from '@mui/icons-material/AirplanemodeInactive';
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-
-import { useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
+
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getVisitedFromSource } from "../auth/firebase";
 import { initializeCountries } from "../store/countriesSlice";
@@ -42,13 +40,9 @@ const Visited = () => {
               {visited.some(
                 (visit) => visit === country.name?.common
               ) ? (
-                <AirplanemodeActiveIcon
-                  onClick={() => dispatch(removeVisited(country.name.common))}
-                />
+                <AirplanemodeActiveIcon onClick={() => dispatch(removeVisited(country.name.common))}/>
               ) : (
-                <AirplanemodeInactiveIcon
-                  onClick={() => dispatch(addVisited(country.name.common))}
-                />
+                <AirplanemodeInactiveIcon onClick={() => dispatch(addVisited(country.name.common))}/>
               )}
               <Card.Img
                 variant="top"

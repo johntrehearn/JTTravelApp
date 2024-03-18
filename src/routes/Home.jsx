@@ -1,15 +1,12 @@
+import WelcomeUser from './WelcomeUser';
+import IMAGES from '../images/images';
+
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, logout } from "../auth/firebase";
-import WelcomeUser from './WelcomeUser';
-import IMAGES from '../images/images';
-
-
-
 
 const Home = () => {
-
 
   return (
     <div className='landingPage'>
